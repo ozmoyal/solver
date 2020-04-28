@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/oz/Desktop/cpp/solver/Demo.cpp
+iostream
+-
+complex
+-
+solver.hpp
+/home/oz/Desktop/cpp/solver/solver.hpp
+

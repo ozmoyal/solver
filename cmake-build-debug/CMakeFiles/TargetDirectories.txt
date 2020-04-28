@@ -1,0 +1,3 @@
+/home/oz/Desktop/cpp/solver/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/oz/Desktop/cpp/solver/cmake-build-debug/CMakeFiles/solver.dir
+/home/oz/Desktop/cpp/solver/cmake-build-debug/CMakeFiles/edit_cache.dir
