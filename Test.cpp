@@ -43,17 +43,32 @@ TEST_CASE("real number")
     CHECK_THROWS(solve(x*x+3*x+1==x^2+x+2*x+1));
     CHECK_THROWS(solve(x*x+3*x+1-(x^2+x+2*x+1)==0);
     //30
-
-
-    
-     
-
-
-
-
-
+    CHECK(abs(solve(4*x^2+8*x+2))-1.70710<=0.0001);
+    CHECK(abs(solve(4*x^2-8*x+2))-1.70710<=0.0001);
+    CHECK(abs(solve(2*x^2+2*x-2))-1.61803<=0.0001);
+    CHECK(solve(x*x-2*x+1==0)==1);
+    CHECK(solve(2*(x^2)-2*x+1==x*x)==1);
+    CHECK(solve(2*(x^2)-2*x-2*x+2==0)==1);
+    CHECK(solve(2*(x^2)+2==4x)==1);
+    CHECK(solve(9*(x^2)-6*9*x+80==-1)==3);
+    CHECK(solve(x^2-x*x+2x==2)==1);
+    CHECK(solve(3*x+2*x==25)==5);
+    //40
+    CHECK(solve(x^2+23x+132==0)-11<=1);
+    CHECK_THROWS(solve(4*x^2-x-48=3*x^2-12+3*x));
+    CHECK(solve(16*x-7==-71)==-4);
+    CHECK_THROWS(solve(121x^2-110x==4));
+    CHECK_THROWS(solve(32x^2+18x-17==0));
+    CHECK_THROWS(solve(56x^2+27==89x-8));
+    CHECK_THROWS(solve(42x^2-69x+20=7x^2-8));
+    CHECK(abs(solve(6*2*x*x-12==0))==1);
+    CHECK(abs(solve(36x^2-1==0))-0.1666666<=0.00001);
+    CHECK(solve(2*x-4==10)==7);
+    //50
 
 }
+
+
 TEST_CASE("complex number")
 {
      ComplexVariable x;
@@ -116,24 +131,5 @@ TEST_CASE("complex number")
     //50
 
     
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
 
 }
