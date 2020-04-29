@@ -25,6 +25,33 @@ TEST_CASE("real number")
     CHECK_THROWS(solve(4x+2-4x==0));
     CHECK(solve(x+x-2==10)==6);
     CHECK(abs(solve(x^2==81)==9);
+    CHECK(abs(solve(x*x==64)==8);
+    CHECK(abs(solve(3*3*x*x==81))==3);
+    CHECK(abs(solve(3*3*x*x==9*9))==3);
+    CHECK(abs(solve(3*3*x*x==3*3*3*3))==3);
+    CHECK(solve(2*2*x+2*2-2*x-2==0)==1);
+    CHECK(solve(3^2*x==3^2)==1);
+    //20
+    CHECK_THROWS(solve(3^2*x+2==3^2*x));
+    CHECK_THROWS(solve(3^2*(x^2)+20*x==-24));
+    CHECK_THROWS(solve(2*(x^2)+7*(x^2)+20*x==-24));
+    CHECK_THROWS(solve(3^2*(x^2)+20*x+12==-12));
+    CHECK_THROWS(solve(2x+2==2x+2));
+    CHECK_THROWS(solve(x+x-2x+2==2));
+    CHECK_THROWS(solve(x*x==x^2));
+    CHECK_THROWS(solve(x*x+2==x^2+1);
+    CHECK_THROWS(solve(x*x+3*x+1==x^2+x+2*x+1));
+    CHECK_THROWS(solve(x*x+3*x+1-(x^2+x+2*x+1)==0);
+    //30
+
+
+    
+     
+
+
+
+
+
 
 }
 TEST_CASE("complex number")
@@ -75,6 +102,20 @@ TEST_CASE("complex number")
     CHECK(solve(2x+4+complex(-2,-2)==0)==complex(-1,1));
     CHECK(solve(4x+4+complex(-2,-2)==0)==complex(-0.5,0.5));
     //40
+    CHECK(solve(x*complex(1,1)==complex(1,1,))==complex(1,1));
+    CHECK(solve(x*complex(1,1)+complex(2,2)==0)==complex(-2,2));
+    CHECK(solve(2*x*complex(1,1)==complex(1,1))==complex(0.5,0.5));
+    CHECK(solve(4*x*complex(1,1)+complex(1,1)==complex(9,9))==complex(2,2));
+    CHECK(solve(2*complex(2,2)==2*complex(2,2))==complex(1,1));
+    CHECK(solve(x*complex(1,1)+x*complex(2,2)==complex(3,3))==complex(1,1));
+    CHECK(solve(x*complex(1,1)+x*complex(2,2)+complex(3,3)==0)==complex(-1,-1));
+    CHECK(solve(x*complex(1,1)+x*complex(-1,-1)==0)==complex(0,0));
+    CHECK(solve(x*complex(1,1)+x*complex(1,1)==1)==complex(0.25,-0.25));
+    CHECK(solve(x*complex(1,1)+x*complex(1,1)==-2)==complex(-0.5,0.5));
+    CHECK(solve(x*complex(1,1)+x*complex(1,1)==4)==complex(1,-1));
+    //50
+
+    
 
 
 
