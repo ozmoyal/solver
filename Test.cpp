@@ -53,7 +53,30 @@ TEST_CASE("complex number")
     CHECK(solve(x+complex(2,2)==complex(2,2)-x)==complex(0,0));
     CHECK(solve(4x+complex(0,0)+4==0)==complex(-1,0));
     //20
-    
+    CHECK(solve(4*x+12==0)==complex(-3,0));
+    CHECK(solve(4*x+complex(4,12)==0)==complex(-1,-3));
+    CHECK(solve(4*x+complex(2,4)+4==0)==complex(-1.5,-1));
+    CHECK(solve(6*x+8==complex(8,6)==complex(0,1)));
+    CHECK(solve(x==complex(0,1)+1)==complex(1,1));
+    CHECK(solve(2*x=3*x)==complex(0,0));
+    CHECK(solve(5*x-4*x==12)==complex(12,0));
+    CHECK(solve(40x==10)==complex(4,0));
+    CHECK(solve(12+3*4*x==18)==complex(0.5,0));
+    CHECK(solve(4*3+4*3*x==18)==complex(0.5,0));
+    //30
+    CHECK(solve(2*x*6==12)==complex(1,0));
+    CHECK(solve(2*x*6-6==6)==complex(1,0));
+    CHECK(solve(x+complex(6,0)==0)==complex(-6,0));
+    CHECK(solve(2*6*x+complex(-6,0)==complex(6,12))==complex(1,1));
+    CHECK(solve(12*x+complex(-6,0)==complex(-6,-12))==complex(-1,-1));
+    CHECK(solve(12*x+complex(-6,0)==complex(-6,12))==complex(-1,1));
+    CHECK(solve(2x-2x+2-2==0)==complex(0,0));
+    CHECK(solve(x+1+complex(1,1)==0)==complex(-1,-2));
+    CHECK(solve(2x+4+complex(-2,-2)==0)==complex(-1,1));
+    CHECK(solve(4x+4+complex(-2,-2)==0)==complex(-0.5,0.5));
+    //40
+
+
 
 
 
