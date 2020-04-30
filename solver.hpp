@@ -45,7 +45,6 @@ namespace solver {
 
     };
 
-    double solve(RealVariable x);
 
     class ComplexVariable {
     private:
@@ -81,6 +80,8 @@ namespace solver {
 
         friend ComplexVariable &operator^(ComplexVariable x, int num);
     };
+
+    double solve(RealVariable x);
 
     std::complex<double> solve(ComplexVariable y);
 
