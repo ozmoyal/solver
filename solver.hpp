@@ -27,6 +27,9 @@ namespace solver {
 
         friend RealVariable &operator*(RealVariable y, double x);
 
+        friend RealVariable &operator*(RealVariable y, RealVariable x);
+
+
         friend RealVariable &operator/(RealVariable y, double x);
 
         friend RealVariable &operator^(RealVariable x, int num);

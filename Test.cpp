@@ -157,6 +157,19 @@ TEST_CASE ("real") {
             CHECK_THROWS(abs(solve(34 * (x ^ 2) + 37 * x + 28 == 0.0)));
             CHECK(abs(solve(-34 * (x ^ 2) + 44 * x - 14 == 0.0)) - 0.56387 < 0.0001);
 
+            CHECK_THROWS(solve(4 * x + 5 - 4 * x == 0));
+            CHECK_THROWS(solve(4 * x + 2 - 4 * x == 0));
+            CHECK(solve(x + x - 2 == 10) == 6);
+            CHECK(abs(solve(x ^ 2 == 81) == 9));
+
+            CHECK_THROWS(abs(solve(-28*(x^2)+13*x-22==0.0)));
+            CHECK(solve(2 * x - 4 == 10) == 7);
+            CHECK(solve(x + 1 == 0) == -1);
+            CHECK(solve(x + 5 == 5) == 0);
+            CHECK(abs(solve(x ^ 2 == 4) == 2));
+            CHECK(abs(solve(x ^ 2 == 9) == 3));
+            CHECK(abs(solve(x ^ 2 + 5 == 30) == 5));
+
 
             CHECK((solve((y ^ 2) - y == 2)) == 2);
             CHECK_THROWS(solve(4 * (y ^ 2) - y - 48 = 3 * (y ^ 2) - 12 + 3 * y));

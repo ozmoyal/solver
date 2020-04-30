@@ -39,6 +39,12 @@ RealVariable &solver::operator*(RealVariable y, double x) {
     return *n;
 }
 
+RealVariable &solver::operator*(RealVariable y, RealVariable x) {
+    RealVariable *n = new RealVariable();
+    return *n;
+}
+
+
 RealVariable &solver::operator/(RealVariable y, double x) {
     RealVariable *n = new RealVariable();
     return *n;
@@ -153,7 +159,7 @@ double solver::solve(RealVariable x) {
 }
 
 std::complex<double> solver::solve(ComplexVariable y) {
-    return std::complex(0.0,0.0);
+    return std::complex(0.0, 0.0);
 }
 
 
