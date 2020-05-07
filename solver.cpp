@@ -40,27 +40,31 @@ RealVariable &solver::operator+(double y, RealVariable x) {
 
 RealVariable &solver::operator*(double x, RealVariable y) {
     RealVariable *n = new RealVariable();
-    n->b = x * y.b;
+    //n->b = x * y.b;
+    n->a=y.a*x;
+    n->b=y.b*x;
+    n->c=y.c*x;
     return *n;
 }
 
-RealVariable &solver::operator*(RealVariable y, double x) {
-    RealVariable *n = new RealVariable();
-    n->b = x * y.b;
-    return *n;
-}
+//RealVariable &solver::operator*(RealVariable y, double x) {
+   // RealVariable *n = new RealVariable();
+ //   n->b = x * y.b;
+ //   return *n;
+//}
 
 RealVariable &solver::operator*(RealVariable x, RealVariable y) {
     RealVariable *n = new RealVariable();
-    n->a = x.a + y.a;
-    n->b = y.b;
+    n->a = x.a * y.a;
+    n->b = y.b*x.b;
+    n->c=y.c*x.c;
     return *n;
 }
 
 
 RealVariable &solver::operator/(RealVariable y, double x) {
     RealVariable *n = new RealVariable();
-    if (x == 0) throw std::invalid_argument("can't dived by zero");
+    if (x == 0.0) throw std::invalid_argument("can't dived by zero");
     n->a = y.a / x;
     n->b = y.b / x;
     n->c = y.c / x;
@@ -119,17 +123,17 @@ RealVariable &solver::operator-(RealVariable x, double y) {
 
 RealVariable &solver::operator-(double y, RealVariable x) {
     RealVariable *n = new RealVariable();
-    n->a = x.a;
+    n->a = -x.a;
     n->b = -x.b;
-    n->c = x.c + y;
+    n->c =  y-x.c;
     return *n;
 }
 
 RealVariable &solver::operator-(RealVariable x, RealVariable y) {
     RealVariable *n = new RealVariable();
-    n->a = y.a - x.a;
-    n->b = y.b - x.b;
-    n->c = y.c - x.c;
+    n->a = x.a-y.a;
+    n->b =x.b-y.b;
+    n->c =x.c-y.c;
     return *n;
 }
 
@@ -139,13 +143,17 @@ solver::ComplexVariable::ComplexVariable() : a(0.0, 0.0), b(1.0, 0.0), c(0, 0) {
 
 ComplexVariable &solver::operator*(std::complex<double> x, ComplexVariable y) {
     ComplexVariable *n = new ComplexVariable();
-    n->b = x * y.b;
+  n->a=x *y.a;
+  n->b=x*y.b;
+  n->c=x*y.c;
     return *n;
 }
 
-ComplexVariable &solver::operator*(ComplexVariable x, std::complex<double> y) {
+ComplexVariable &solver::operator*(ComplexVariable y, std::complex<double> x) {
     ComplexVariable *n = new ComplexVariable();
-    n->b = y * x.b;
+    n->a=x *y.a;
+  n->b=x*y.b;
+  n->c=x*y.c;
     return *n;
 }
 
@@ -223,7 +231,7 @@ ComplexVariable &solver::operator==(std::complex<double> y, ComplexVariable x) {
 
 ComplexVariable &solver::operator/(ComplexVariable x, double div) {
     ComplexVariable *n = new ComplexVariable();
-    if (div == 0) throw std::invalid_argument("cant diving by 0");
+    if (div == 0.0) throw std::invalid_argument("cant diving by 0");
     n->a = x.a / div;
     n->b = x.b / div;
     n->c = x.c / div;
@@ -249,19 +257,22 @@ ComplexVariable &solver::operator^(const ComplexVariable x, int exp) {
 }
 
 double solver::solve(RealVariable x) {
-    if (x.a == 0) {
-        if (x.b == 0) throw std::invalid_argument("cant devide by zero");
+    if (x.a == 0.0)
+     {
+        if (x.b == 0.0) throw std::invalid_argument("cant devide by zero");
+        else{
         double ans = -(x.c) / x.b;
         return ans;
-    } else if (x.a != 0) {
+        }
+    }
+     else
+     {
         double delta = pow(x.b, 2.0) - 4 * x.a * x.c;
-        if (delta > 0) {
-            double ans = (-x.b + sqrt(delta)) / 2 * x.a;
-            return ans;
-        } else if (delta == 0) {
-            double ans = (-x.b) / 2 * x.a;
-            return ans;
-        } else {
+        if (delta >= 0) {
+            return ((-x.b + sqrt(delta)) /( 2 * x.a ));
+        } 
+        else 
+        {
             throw std::invalid_argument("There is no real solution");
         }
     }
@@ -270,26 +281,17 @@ double solver::solve(RealVariable x) {
 
 std::complex<double> solver::solve(ComplexVariable y) {
     std::complex<double> ans;
-    if (y.a == 0.0) {
+    if (y.a == 0.0)
+     {
         if (y.b == 0.0) throw std::invalid_argument("cant diving by 0");
-        ans = -(y.c) / y.b;
-        return ans;
-    } else if (y.a != 0.0) {
+        else return(-y.c/y.b);
+    } 
+    else 
+    {
         std::complex<double> delta = pow(y.b, 2.0) - 4.0 * y.a * y.c;
-        if (delta.imag() == 0) {
-            if (delta.real() > 0.0) {
-                ans = (-y.b + sqrt(delta)) / 2.0 * y.a;
-                return ans;
-            } else if (delta == 0.0) {
-                ans = (-y.b) / 2.0 * y.a;
-                return ans;
-            } else if (delta.real() < 0.0) {
-                ans = ((-y.b) + sqrt(delta)) / (2.0 * y.a);
-                return ans;
-            }
+        std::complex<double> ans=(-y.b+sqrt(delta))/(2.0*y.a);
+        return ans;
         }
-
-    }
     return std::complex(0.0, 0.0);
 }
 

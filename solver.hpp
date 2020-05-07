@@ -60,6 +60,8 @@ namespace solver {
 
         friend ComplexVariable &operator*(const ComplexVariable x, const std::complex<double> num);
 
+       // friend ComplexVariable &operator*(const ComplexVariable y, const ComplexVariable x);
+
         friend ComplexVariable &operator-(const ComplexVariable x, const std::complex<double> y);
 
         friend ComplexVariable &operator-(const ComplexVariable x, const ComplexVariable y);
