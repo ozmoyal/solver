@@ -47,11 +47,7 @@ RealVariable &solver::operator*(double x, RealVariable y) {
     return *n;
 }
 
-//RealVariable &solver::operator*(RealVariable y, double x) {
-   // RealVariable *n = new RealVariable();
- //   n->b = x * y.b;
- //   return *n;
-//}
+
 
 RealVariable &solver::operator*(RealVariable x, RealVariable y) {
     RealVariable *n = new RealVariable();
